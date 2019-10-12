@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 main() => runApp(Controles());
 
@@ -22,6 +21,7 @@ class Estado extends State {
   bool palomitas = false;
   bool cubetaPalomera = true;
   String pelicula;
+  double calificacion = 0.0;
 
   @override
   Widget build(BuildContext context) {
@@ -122,7 +122,19 @@ class Estado extends State {
                 )
               ],
             ),
-            Text('Tu pelicula es: $pelicula')
+            Text('Tu pelicula es: $pelicula'),
+            Slider(
+              min: 0,
+              max: 10,
+              divisions: 10,
+              value: calificacion,
+              label: 'Calificacion: $calificacion',
+              onChanged: (cambio) {
+                setState(() {
+                  calificacion = cambio;
+                });
+              }
+            )
           ],
         ),
       )
